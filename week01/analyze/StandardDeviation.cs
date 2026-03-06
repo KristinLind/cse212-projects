@@ -15,14 +15,14 @@ public static class StandardDeviation {
     private static double StandardDeviation1(int[] numbers) {
         var total = 0.0;
         var count = 0;
-        foreach (var number in numbers) {
+        foreach (var number in numbers) {  //loop 1
             total += number;
             count += 1;
         }
 
         var avg = total / count;
         var sumSquaredDifferences = 0.0;
-        foreach (var number in numbers) {
+        foreach (var number in numbers) { //loop 2
             sumSquaredDifferences += Math.Pow(number - avg, 2);
         }
 
