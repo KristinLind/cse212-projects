@@ -9,7 +9,9 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Add three items with different priorities
     // Expected Result: Item with highest priority is returned first
-    // Defect(s) Found: Highest priority item was not correctly selected due to loop not checking last item.
+    // Defect(s) Found: The loop that searched for the highest priority item did not check the
+    // final element in the list because it used "_queue.Count - 1" in the loop condition.
+    // This caused the highest priority item to sometimes be skipped.
     public void TestPriorityQueue_HighestPriority()
     {
         var queue = new PriorityQueue();
@@ -26,7 +28,8 @@ public class PriorityQueueTests
     [TestMethod]
     // Scenario: Remove items sequentially
     // Expected Result: Items come out in descending priority order
-    // Defect(s) Found: Item was returned but not removed from queue.
+    // Defect(s) Found: The Dequeue method returned the value but did not remove it from the
+    // queue, causing the same item to be returned repeatedly.
     public void TestPriorityQueue_Order()
     {
         var queue = new PriorityQueue();
@@ -40,5 +43,3 @@ public class PriorityQueueTests
         Assert.AreEqual("A", queue.Dequeue());
     }
 }
-// Defect(s) Found: Queue inserted new people at the front instead of the back, this 
-// caused code to break with FIFO behavior. 
