@@ -1,7 +1,7 @@
 ﻿public class DuplicateCounterSolution
 {
-    //CSE 212 Lesson 5C Solved
-    //Count how many duplicates are in a collection of data.
+    // CSE 212 Lesson 5C Solved
+    // Count how many duplicates are in a collection of data.
 
     public static void Run()
     {
@@ -25,12 +25,13 @@
     }
 
     /// <summary>
-    /// Loop through the data, check for membership in the set.
-    /// If yes, then increase the counter; otherwise, add it to the set.
+    /// Counts every extra occurrence of a value beyond the first.
+    /// A HashSet is used to track numbers that have already been seen.
+    /// If a number already exists in the set, it is counted as a duplicate.
+    /// Otherwise, it is added to the set.
     /// </summary>
     private static int CountDuplicates(int[] data)
     {
-        // Add code here.
         var unique = new HashSet<int>();
         var duplicates = 0;
 
@@ -46,8 +47,10 @@
     }
 
     /// <summary>
-    /// Add everything in the data to the set. Duplicates will be automatically ignored.
-    /// Subtract the length of the set from the length of the data.
+    /// Alternate method for counting duplicates.
+    /// A HashSet automatically removes duplicate values.
+    /// The number of duplicates is calculated by subtracting
+    /// the number of unique values from the total number of items.
     /// </summary>
     private static int CountDuplicatesAlternate(int[] data)
     {
