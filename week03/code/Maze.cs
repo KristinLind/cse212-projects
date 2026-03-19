@@ -26,13 +26,16 @@ public class Maze
     }
 
     // TODO Problem 4 - ADD YOUR CODE HERE
-    /// <summary>
     /// Check to see if you can move left.  If you can, then move.  If you
     /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
-    /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+
+        if (!directions[0])
+            throw new InvalidOperationException("Can't go that way!");
+
+        _currX -= 1;
     }
 
     /// <summary>
@@ -41,7 +44,12 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+
+        if (!directions[1])
+            throw new InvalidOperationException("Can't go that way!");
+
+        _currX += 1;
     }
 
     /// <summary>
@@ -50,7 +58,12 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+
+        if (!directions[2])
+            throw new InvalidOperationException("Can't go that way!");
+
+        _currY -= 1;
     }
 
     /// <summary>
@@ -59,7 +72,12 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        var directions = _mazeMap[(_currX, _currY)];
+
+        if (!directions[3])
+            throw new InvalidOperationException("Can't go that way!");
+
+        _currY += 1;
     }
 
     public string GetStatus()
@@ -67,3 +85,9 @@ public class Maze
         return $"Current location (x={_currX}, y={_currY})";
     }
 }
+
+/// <summary> I used a dictionary to represent the maze where each coordinate maps
+/// to allowed directions (left, right, up, down). Before moving, I check
+/// if the direction is valid. If it is not allowed, I throw an exception.
+/// If it is allowed, I update the current position.
+/// </summary>
